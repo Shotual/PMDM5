@@ -19,22 +19,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);loginFragment=(LoginFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentLogin );
+        registerFragment=(RegisterFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentRegister );
 
-        loginFragment=(LoginFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentLogin );
-
+        //INICIALIZAMOS FIREBASE
+        //fireBaseAdmin = new FireBaseAdmin();
+        //INICIALIZAMOS EL MAINACTIVITYEVENTS
         MainActivityEvents mainActivityEvents= new MainActivityEvents(this);
+
+
+
+
+        //PARA QUE EL MAINACTIVITY ESCUCHE DEL LOGINFRAGMENT,REGISTER Y FIREBASEADMIN
         loginFragment.setListener(mainActivityEvents);
         registerFragment.setListener(mainActivityEvents);
         DataHolder.instance.fireBaseAdmin.setListener(mainActivityEvents);
 
+        //CREAMOS LAS TRANSICIONES
 
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        //PARA QUE NOS SALGA PRIMERO EL LOGIN
+        transaction.show(loginFragment);
+        transaction.hide(registerFragment);
+        transaction.commit();
+
+        //  SALTARSE LOGIN
+        //DataHolder.instance.fireBaseAdmin.loginEmailPass("guille@guille.com","1234567890",this);
     }
 }
 
 
 class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListener, FireBaseAdminListener {
-    
+
     MainActivity mainActivity;
 
     public MainActivityEvents(MainActivity mainActivity){
@@ -53,6 +70,8 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
 
     @Override
     public void loginFragmentLoginButtonClicked(String sUser, String sPass) {
+
+        DataHolder.instance.fireBaseAdmin.loginEmailPass(sUser,sPass,mainActivity  );
 
     }
 

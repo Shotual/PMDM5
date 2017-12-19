@@ -1,5 +1,6 @@
 package com.example.appexamen;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -101,11 +102,28 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
 
     @Override
     public void firebaseAdmin_registerOk(boolean blOk) {
+        if(blOk){
+            Log.v("registroOk","TODO CORRECTO"+blOk);
+            //ESTA PARTE DE CODIGO LO QUE HARA ES INICIAR EL SEGUNDO ACTIVITY Y FINALIZAR EL MAIN
+            Intent intent= new Intent(mainActivity,SecondActivity.class);
+            mainActivity.startActivity(intent);
+            mainActivity.finish();
+        }
 
     }
 
     @Override
     public void firebaseAdmin_loginOk(boolean blOk) {
+        if(blOk){
+            Log.v("loginOk","TODO CORRECTO"+blOk);
+            //ESTA PARTE DE CODIGO LO QUE HARA ES INICIAR EL SEGUNDO ACTIVITY Y FINALIZAR EL MAIN
+            Intent intent= new Intent(mainActivity,SecondActivity.class);
+            mainActivity.startActivity(intent);
+            mainActivity.finish();
+
+        }else{
+            Log.v("LoginError","TODO MAL"+blOk);
+        }
 
     }
 

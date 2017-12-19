@@ -19,6 +19,7 @@ import android.support.v7.widget.RecyclerView;
 
 public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder> {
 
+    private ListaNoticiasAdapterListener listener;
     private ArrayList<FBNoticia> noticias;
     private Context mContext;
 
@@ -26,6 +27,10 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
 
         this.noticias=noticias;
         this.mContext=mContext;
+    }
+    public void setListener(ListaNoticiasAdapterListener listener){
+
+        this.listener=listener;
     }
 
 
@@ -74,5 +79,25 @@ class NoticiaViewHolder extends RecyclerView.ViewHolder{
         tvnombre=itemView.findViewById(R.id.tvnombre);
         tvjuego=itemView.findViewById(R.id.tvjuego);
         imgnoticia=itemView.findViewById(R.id.imgnoticias);
+
+        //INICIALIZAMOS EL EVENTO
+        NoticiaViewHolderEvents events= new NoticiaViewHolderEvents(this);
+        itemView.setOnClickListener(events);
+    }
+
+
+}
+
+class NoticiaViewHolderEvents implements View.OnClickListener{
+
+    NoticiaViewHolder noticiaViewHolder;
+
+    public NoticiaViewHolderEvents(NoticiaViewHolder noticiaViewHolder){
+        this.noticiaViewHolder=noticiaViewHolder;
+
+    }
+    @Override
+    public void onClick(View v) {
+
     }
 }

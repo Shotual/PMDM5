@@ -51,7 +51,7 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
 
         holder.tvnombre.setText(noticias.get(position).Nombre);
         holder.tvjuego.setText(noticias.get(position).Juego);
-
+        holder.setListener(this.listener);
 
         Glide.with(mContext).load(noticias.get(position).imgurl)
              .into(holder.imgnoticia);
@@ -65,39 +65,3 @@ public class ListaNoticiasAdapter extends RecyclerView.Adapter<NoticiaViewHolder
 }
 
 //MOLDE
-class NoticiaViewHolder extends RecyclerView.ViewHolder{
-
-
-    public TextView tvjuego;
-    public TextView tvnombre;
-    public ImageView imgnoticia;
-
-
-    public NoticiaViewHolder(View itemView) {
-        super(itemView);
-
-        tvnombre=itemView.findViewById(R.id.tvnombre);
-        tvjuego=itemView.findViewById(R.id.tvjuego);
-        imgnoticia=itemView.findViewById(R.id.imgnoticias);
-
-        //INICIALIZAMOS EL EVENTO
-        NoticiaViewHolderEvents events= new NoticiaViewHolderEvents(this);
-        itemView.setOnClickListener(events);
-    }
-
-
-}
-
-class NoticiaViewHolderEvents implements View.OnClickListener{
-
-    NoticiaViewHolder noticiaViewHolder;
-
-    public NoticiaViewHolderEvents(NoticiaViewHolder noticiaViewHolder){
-        this.noticiaViewHolder=noticiaViewHolder;
-
-    }
-    @Override
-    public void onClick(View v) {
-
-    }
-}

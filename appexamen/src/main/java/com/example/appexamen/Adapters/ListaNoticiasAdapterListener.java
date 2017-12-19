@@ -5,5 +5,5 @@ package com.example.appexamen.Adapters;
  */
 
 public interface ListaNoticiasAdapterListener {
-    public void ListaNoticiasAdapterClicked(NoticiaViewHolder celdaHolder);
+    public void ListaNoticiasAdapterCeldaClick(NoticiaViewHolder celdaHolder);
 }

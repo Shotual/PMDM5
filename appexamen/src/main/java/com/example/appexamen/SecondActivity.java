@@ -6,6 +6,8 @@ import android.util.Log;
 
 
 import com.example.appexamen.Adapters.ListaNoticiasAdapter;
+import com.example.appexamen.Adapters.ListaNoticiasAdapterListener;
+import com.example.appexamen.Adapters.NoticiaViewHolder;
 import com.example.appexamen.FBObjetos.FBNoticia;
 import com.example.milib.ListaFragment;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +22,7 @@ import java.util.Map;
 
 public class SecondActivity extends AppCompatActivity {
   ListaFragment listaFragmentNoticias;
+    ListaNoticiasAdapter listaNoticiasAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 }
-class SecondActivityEvents implements FireBaseAdminListener{
+class SecondActivityEvents implements FireBaseAdminListener, ListaNoticiasAdapterListener{
 
 
     SecondActivity secondActivity;
@@ -80,8 +83,14 @@ class SecondActivityEvents implements FireBaseAdminListener{
             Log.v("noticias","noticias CONTIENE: "+noticias);
 
             //PARA TRANSFORMAR UN COLLECTION A UN ARRAY LIST HAY QUE HACER es new ArrayList<Mensaje>(msg.values())
-            ListaNoticiasAdapter listaNoticiasAdapter=new ListaNoticiasAdapter(noticias,secondActivity);
-            secondActivity.listaFragmentNoticias.recyclerView.setAdapter(listaNoticiasAdapter);
+            secondActivity.listaNoticiasAdapter=new ListaNoticiasAdapter(noticias,secondActivity);
+            secondActivity.listaFragmentNoticias.recyclerView.setAdapter(secondActivity.listaNoticiasAdapter);
+            secondActivity.listaNoticiasAdapter.setListener(this );
         }
+    }
+
+    @Override
+    public void ListaNoticiasAdapterCeldaClick(NoticiaViewHolder celdaHolder) {
+
     }
 }

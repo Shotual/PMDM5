@@ -1,11 +1,15 @@
 package com.example.guille.apptutorial.Adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.guille.apptutorial.FBObjects.FBCoche;
 import com.example.guille.apptutorial.FBObjects.Mensaje;
 import com.example.guille.apptutorial.R;
@@ -19,10 +23,12 @@ import java.util.ArrayList;
 public class ListaCochesAdapter extends RecyclerView.Adapter<CocheViewHolder> {
 
     private ArrayList<FBCoche> coches;
+    private Context mContext;
 
-    public ListaCochesAdapter(ArrayList<FBCoche> coches){
+    public ListaCochesAdapter(ArrayList<FBCoche> coches,Context mContext){
 
         this.coches=coches;
+        this.mContext=mContext;
     }
 
 
@@ -46,6 +52,9 @@ public class ListaCochesAdapter extends RecyclerView.Adapter<CocheViewHolder> {
         holder.tvlat.setText(coches.get(position).lat+"");
         holder.tvlon.setText(coches.get(position).lon+"");
 
+        Glide.with(mContext).load(coches.get(position).imgurl)
+                .into(holder.imgcoche);
+
     }
 
     @Override
@@ -53,6 +62,8 @@ public class ListaCochesAdapter extends RecyclerView.Adapter<CocheViewHolder> {
         return coches.size();
     }
 }
+
+//MOLDE
 class CocheViewHolder extends RecyclerView.ViewHolder{
 
     public TextView tvfabricado;
@@ -60,6 +71,7 @@ class CocheViewHolder extends RecyclerView.ViewHolder{
     public TextView tvnombre;
     public TextView tvlat;
     public TextView tvlon;
+    public ImageView imgcoche;
 
 
     public CocheViewHolder(View itemView) {
@@ -69,6 +81,6 @@ class CocheViewHolder extends RecyclerView.ViewHolder{
         tvnombre=itemView.findViewById(R.id.tvnombre);
         tvlat=itemView.findViewById(R.id.tvlat);
         tvlon=itemView.findViewById(R.id.tvlon);
-
+        imgcoche=itemView.findViewById(R.id.imgcoche);
     }
 }

@@ -61,7 +61,8 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
 
     @Override
     public void registerFragmentRegisterButtonAceptarClicked(String sUser, String sPass) {
-
+        Log.v("tranAceptar","TODO CORRECTO");
+        DataHolder.instance.fireBaseAdmin.registerEmailPass(sUser,sPass,mainActivity);
     }
 
     @Override

@@ -8,6 +8,8 @@ import com.example.milib.LoginFragment;
 import com.example.milib.LoginFragmentListener;
 import com.example.milib.RegisterFragment;
 import com.example.milib.RegisterFragmentListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,13 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivityEvents mainActivityEvents= new MainActivityEvents(this);
         loginFragment.setListener(mainActivityEvents);
+        registerFragment.setListener(mainActivityEvents);
+        DataHolder.instance.fireBaseAdmin.setListener(mainActivityEvents);
 
 
     }
 }
 
 
-class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListener {
+class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListener, FireBaseAdminListener {
+    
     MainActivity mainActivity;
 
     public MainActivityEvents(MainActivity mainActivity){
@@ -53,6 +58,21 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
 
     @Override
     public void loginFragmentRegisterButtonClicked() {
+
+    }
+
+    @Override
+    public void firebaseAdmin_registerOk(boolean blOk) {
+
+    }
+
+    @Override
+    public void firebaseAdmin_loginOk(boolean blOk) {
+
+    }
+
+    @Override
+    public void firebaseAdmin_ramaDescargada(String rama, DataSnapshot dataSnapshot) {
 
     }
 }

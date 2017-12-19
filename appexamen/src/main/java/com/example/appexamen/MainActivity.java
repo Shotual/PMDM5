@@ -3,6 +3,7 @@ package com.example.appexamen;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.milib.LoginFragment;
 import com.example.milib.LoginFragmentListener;
@@ -77,6 +78,16 @@ class MainActivityEvents implements LoginFragmentListener, RegisterFragmentListe
 
     @Override
     public void loginFragmentRegisterButtonClicked() {
+
+        //CREAMOS LAS TRANSICIONES
+        Log.v("registro","REEEEEEEEGIIIIIIIIISSSSSSTROOOOOOOOO");
+
+        FragmentTransaction transaction = mainActivity.getSupportFragmentManager().beginTransaction();
+
+        //PARA QUE CUANDO RECIBAMOS QUE SE HA PULSADO EL BOTON DE REGISTRO SE OCULTE EL FRAGMENT DEL LOGIN Y SE MUESTRE EL REGISTRO
+        transaction.hide(mainActivity.loginFragment);
+        transaction.show(mainActivity.registerFragment);
+        transaction.commit();
 
     }
 

@@ -50,5 +50,6 @@ class NoticiaViewHolderEvents implements View.OnClickListener{
     public void onClick(View v) {
         noticiaViewHolder.listener.ListaNoticiasAdapterCeldaClick (noticiaViewHolder);
 
+
     }
 }

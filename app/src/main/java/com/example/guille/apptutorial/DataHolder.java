@@ -10,8 +10,12 @@ public class DataHolder {
     public static DataHolder instance = new DataHolder();
 
     public FireBaseAdmin fireBaseAdmin;
+    public String API_KEY="03408e06b3d1acd722c783abf5f4da71";
+
+
 
     public DataHolder(){
         fireBaseAdmin=new FireBaseAdmin();
+      ;
     }
 }

@@ -16,6 +16,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.content.ContentValues.TAG;
 
 /**
@@ -114,5 +117,24 @@ public class FireBaseAdmin {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+    }
+
+    public void insertarEnRama(String rutaRama, Map<String,Object> valores){
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/posts/" + rutaRama, valores);
+        myRefRaiz.updateChildren(childUpdates);
+
+    }
+
+    public void insertarEnMultiRama( Map<String, Object> rutaRamasValores){
+
+        myRefRaiz.updateChildren(rutaRamasValores);
+
+    }
+
+    public String generarKeySobreRama(String sRutaRama ){
+
+        return  myRefRaiz.child("sRutaRama").push().getKey();
+
     }
 }

@@ -96,7 +96,7 @@ public class  HttpAsyncTask extends AsyncTask<String, Integer, String[]> {
     @Override
     protected void onPostExecute(String[] in) {
     super.onPostExecute(in);
-Log.v("httpasyn","se acabo la tarea "+in[0]+"  "+in[1]);
+     Log.v("httpasyn","se acabo la tarea "+in[0]+"  "+in[1]);
     }
 
 

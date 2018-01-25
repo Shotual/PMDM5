@@ -92,8 +92,8 @@ import java.util.Map;
          httpJsonAsyncTask.execute(url);
 
          HttpJsonAsyncTask httpJsonAsyncTask1=new HttpJsonAsyncTask();
-         String url1=String.format("http://10.0.2.2/pruebasJSON/leejugadores.php");
-         httpJsonAsyncTask.execute(url1);
+         String url1 = String.format("http://10.0.2.2/pruebasJSON/leeJugadores.php");
+         httpJsonAsyncTask1.execute(url1);
 
         Log.v("SecondActivity","--------EMAAAIL: "+DataHolder.instance.fireBaseAdmin.user.getEmail());
 

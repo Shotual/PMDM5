@@ -18,7 +18,7 @@ import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 public class TwitterLActivity extends AppCompatActivity {
 
     TwitterLoginButton loginButton;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

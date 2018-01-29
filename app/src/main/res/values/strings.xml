@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">FLClase</string>
     <string name="title_activity_maps">Map</string>
-    <string name="facebook_app_id">1983995198546491 </string>
+    <string name="facebook_app_id">1983995198546491</string>
     <string name="fb_login_protocol_scheme">fb1983995198546491</string>
-    <string name="com.twitter.sdk.android.CONSUMER_KEY">SQWuXKhwIFbY6lWjphuNVWrPo</string>
-    <string name="com.twitter.sdk.android.CONSUMER_SECRET">0Kyn5VxcbR1Id0kg15iLNVar4sa3U5bkpXckXDcu3MmqK0n9HR</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">JF82J7aL3L0lt08aJZnwTq9Wy</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">Xwk1TXyTZCvedQ7B3V7BkKF2apFJNsdzCYinHvlcmkWvkQTuny</string>
+
 </resources>

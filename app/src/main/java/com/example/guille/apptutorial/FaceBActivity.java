@@ -31,7 +31,7 @@ public class FaceBActivity extends AppCompatActivity {
       //  private static final String EMAIL = "email";
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setReadPermissions("EMAIL");
+        loginButton.setReadPermissions("email");
         // If you are using in a fragment, call loginButton.setFragment(this);
 
         // Callback registration
@@ -39,19 +39,19 @@ public class FaceBActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App
-                Log.v("FaceBActivity","LOGEADO EN FACCEBOOK");
+                Log.v("FB","LOGEADO EN FACCEBOOK");
             }
 
             @Override
             public void onCancel() {
-                Log.v("FaceBActivity","SE HA CANCELADO EL LOGIN");
+                Log.v("FB","SE HA CANCELADO EL LOGIN");
                 // App code
             }
 
             @Override
             public void onError(FacebookException exception) {
                 // App code
-                Log.v("FaceBActivity","HUBO UN ERROR");
+                Log.v("FB","HUBO UN ERROR  "+exception);
             }
         });
 
@@ -60,6 +60,7 @@ public class FaceBActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.v("FB","HUBO UN ERROR");
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }

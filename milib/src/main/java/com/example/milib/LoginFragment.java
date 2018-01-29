@@ -23,6 +23,7 @@ public class LoginFragment extends Fragment {
     public LoginFragmentsEvents events;
     public LoginFragmentListener listener;
 
+
     public LoginFragment() {
         // Required empty public constructor
     }

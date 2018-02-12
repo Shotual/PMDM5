@@ -1,10 +1,15 @@
 package com.example.guille.apptutorial;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.guille.apptutorial.sqliteadmin.Contact;
+import com.example.guille.apptutorial.sqliteadmin.DatabaseHandler;
+import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.database.DatabaseReference;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Result;
@@ -45,6 +50,12 @@ public class TwitterLActivity extends AppCompatActivity {
             }
         });
 
+        DatabaseHandler databaseHandler=new DatabaseHandler(this);
+        Contact contact=new Contact(4,"Yony333", "999999");
+
+        databaseHandler.addContact(contact);
+        //Contact contact1=databaseHandler.getContact(0);
+        Log.v("DDBB","------>>>>>"+databaseHandler.getAllContacts());
 /*
         TwitterConfig config = new TwitterConfig.Builder(this)
                 .logger(new DefaultLogger(Log.DEBUG))
@@ -52,8 +63,14 @@ public class TwitterLActivity extends AppCompatActivity {
                 .debug(true)
                 .build();
         Twitter.initialize(config);
+        FirebaseCrash.log("SECOND ACTIVITY created");
 
 */
+
+
+        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
+        FirebaseCrash.log("SECOND ACTIVITY created");
+
     }
 
     @Override
